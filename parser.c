@@ -15,8 +15,6 @@ char **parser(char *token,char **argv)
 	int num_tokens = 0;
 	int count;
 
-	delim = " \n";
-
 	token = strtok(lineptr, delim);
 
 	while (token != NULL)
