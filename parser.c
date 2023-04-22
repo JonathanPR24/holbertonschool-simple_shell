@@ -3,13 +3,13 @@
 /**
  * parser - tokenizes string
  * @token:string thats being broken up
- * @delim:split string everytime it meets its condition
+ * @argv:used to store an array of strings
  * Return:array of strings that are separated by delimiter in the input string
  */
 
-char **parser(char *token, const char *delim)
+char **parser(char *token,char **argv)
 {
-	char **argv;
+	const char *delim = " \n";
 	char *lineptr = NULL;
 	char *lineptr_copy = NULL;
 	int num_tokens = 0;
