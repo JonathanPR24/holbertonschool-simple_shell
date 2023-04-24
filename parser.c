@@ -7,34 +7,23 @@
  * Return:array of strings that are separated by delimiter in the input string
  */
 
-char **parser(char *token,char **argv)
+char **parser(char *lineptr, char *delim)
 {
-	const char *delim = " \n";
-	char *lineptr = NULL;
-	char *lineptr_copy = NULL;
-	int num_tokens = 0;
-	int count;
+	char **cmnds = NULL;
+	char *cmnd = NULL;
+	int i = 0;
 
-	token = strtok(lineptr, delim);
-
-	while (token != NULL)
+	cmnds = malloc(sizeof(char *) * 10);
+	cmnd = strtok(lineptr, delim);
+	while (cmnd)
 	{
-		num_tokens++;
-		token = strtok(NULL, delim);
+		cmnds[i] = malloc(sizeof(char) * strlen(cmnd) + 1);
+		strcpy(cmnds[i], cmnd);
+		i++;
+		cmnd = NULL;
+		cmnd = strtok(NULL, delim);
 	}
-	num_tokens++;
-
-	argv = malloc(sizeof(char *) * num_tokens);
-
-	token = strtok(lineptr_copy, delim);
-
-	for (count = 0; token != NULL; count++)
-	{
-		argv[count] = malloc(sizeof(char) * strlen(token));
-		strcpy(argv[count], token);
-		token = strtok(NULL, delim);
-	}
-	argv[count] = NULL;
-
-	return (argv);
+	cmnds[i] = NULL;
+	free(cmnd);
+	return (cmnds);
 }
