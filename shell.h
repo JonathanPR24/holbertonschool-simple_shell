@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-char** parser(char *token, const char **argv);
+char **parser(char *token, char **argv);
 void exec(char **argv);
 char *directions(char *cmnd);
 
