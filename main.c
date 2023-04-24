@@ -21,7 +21,7 @@ int main(__attribute__((unused)) int ac ,__attribute__((unused))char **argv)
 			exec(argv);
 
 		}
-	free(lineptr)
+	free(lineptr);
 
 		return (0);
 }
