@@ -9,24 +9,26 @@ int main(__attribute__((unused)) int ac ,__attribute__((unused))char **argv)
 	char **save = NULL;
 
 	while(1)
-		{
-			save = NULL;
-			lineptr = NULL;
-			n = 0;
-			if (isatty(0))
-				printf("%s", prompt);
-			char_read = getline(&lineptr, &n, stdin);
+	{
+		save = NULL;
+		lineptr = NULL;
+		n = 0;
+		if (isatty(0))
+			printf("%s", prompt);	
+		char_read = getline(&lineptr, &n, stdin);
 
-			if (char_read == -1)
-			{
-				free(lineptr);
-				exit(EXIT_SUCCESS);
-			}
-			save = parser(lineptr, " \n");
+		if (char_read == -1)
+		{
 			free(lineptr);
-			exec(save);
-			free(save);
+			exit(EXIT_SUCCESS);
 		}
+		save = parser(lineptr, " \n");
+		free(lineptr);
+		if (save[0])
+			exec(save);
+		else 
+			free(save);
+	}
 
 	free(lineptr);
 	free_array(save);
