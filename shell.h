@@ -7,6 +7,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-char** parser(char* token, const char *delim)
+char** parser(char* token, const char **argv)
 
 #endif
