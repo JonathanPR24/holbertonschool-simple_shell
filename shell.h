@@ -9,9 +9,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
-char **parser(char *token, char **argv);
-void exec(char **argv);
+char **parser(char *token, char *delim);
+int exec(char **argv);
 char *directions(char *cmnd);
+void free_array(char **token);
 
 #endif

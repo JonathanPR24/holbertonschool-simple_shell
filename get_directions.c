@@ -16,10 +16,13 @@ char *directions(char *cmnd)
 		{
 			dir_len = strlen(path_token);
 			file_path = malloc(cmnd_len + dir_len + 2);
-			strcpy(file_path, path_token);
-			strcat(file_path, "/");
-			strcat(file_path, cmnd);
-			strcat(file_path, "\0");
+			if (file_path != NULL)
+			{
+				strcpy(file_path, path_token);
+				strcat(file_path, "/");
+				strcat(file_path, cmnd);
+				file_path[strlen(file_path)] = '\0';
+			}
 			if (stat(file_path, &buffer) == 0)
 			{
 				free(path_copy);

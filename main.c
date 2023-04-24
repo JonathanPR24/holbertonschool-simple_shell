@@ -2,26 +2,33 @@
 
 int main(__attribute__((unused)) int ac ,__attribute__((unused))char **argv)
 {
-	char *prompt = "$";
+	char *prompt = "$ ";
 	char *lineptr = NULL;
 	size_t n = 0;
 	ssize_t char_read;
+	char **save = NULL;
 
 	while(1)
 		{
-			printf("%s", prompt);
+			save = NULL;
+			lineptr = NULL;
+			n = 0;
+			if (isatty(0))
+				printf("%s", prompt);
 			char_read = getline(&lineptr, &n, stdin);
 
 			if (char_read == -1)
 			{
-				printf("Exit\n");
-				return(-1);
+				free(lineptr);
+				exit(EXIT_SUCCESS);
 			}
-			parser(lineptr, argv);
-			exec(argv);
-
+			save = parser(lineptr, " \n");
+			free(lineptr);
+			exec(save);
+			free(save);
 		}
-	free(lineptr);
 
-		return (0);
+	free(lineptr);
+	free_array(save);
+	return (0);
 }

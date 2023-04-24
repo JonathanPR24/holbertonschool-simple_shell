@@ -1,0 +1,4 @@
+#!/bin/bash
+rm mem;
+gcc -g *.c -o mem;
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./mem

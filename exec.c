@@ -1,16 +1,24 @@
 #include "shell.h"
 
-void exec(char **argv)
+int exec(char **save)
 {
 	char *cmnd = NULL;
 	char *real_cmnd = NULL;
+	pid_t child_pid;
+	int status;
 
-	if (argv)
-	{
-		cmnd = argv[0];
+		cmnd = save[0];
 		real_cmnd = directions(cmnd);
-		if (execve(real_cmnd, argv, NULL) == -1)
-		perror("Error:");
-	}
+		child_pid = fork();
+		if (child_pid == -1)
+			perror("Error:");
+		else if (child_pid == 0)
+		{
+			if (execve(real_cmnd, save, NULL) == -1)
+				perror("Error:");
+		}
+		else
+			wait(&status);
+		return (1);
 
 }
