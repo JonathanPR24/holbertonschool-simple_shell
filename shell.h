@@ -6,7 +6,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
-char** parser(char* token, const char **argv)
+char** parser(char *token, const char **argv);
+void exec(char **argv);
+char *directions(char *cmnd);
 
 #endif
