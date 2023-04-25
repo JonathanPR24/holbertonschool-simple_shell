@@ -26,9 +26,9 @@
  * In this project we coded from scratch a simple Unix shell.
   
   * But what is a shell?
-    <div style="background-color:#00ff00;">
+
     A shell is an interactive command line interpreter(CLI). Which allows user's to type in a defined set of commands (e.g. "rm" to remove files, "cat" to combine word documents, etc) and have the operating system run the appropriate function. It is slightly different from a graphical user interface (GUI). For instance, instead of using a mouse to click to open folders and delete files, a user can type in a command (i.e. "ls" or "rm") and have the files be displayed or modified in a list on the command line. GUI and CLI both have the same purpose, to interact with the operating system but their input methods are different and some developers prefer the CLI to interact with the shell because their typing is quicker than clicking and dragging.
-    </div>
+
 [Back to Top](#project-name)
     
 ## **💡Synopsis**
