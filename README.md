@@ -1,6 +1,6 @@
 # **Project Name**
 <p align="center">
-  <img src="Simple shell in c.gif" width="650" height="200">
+  <img src="Simple shell in c.gif" width="650" height="500">
 </p>
 
 ## **📋Table of Contents**
