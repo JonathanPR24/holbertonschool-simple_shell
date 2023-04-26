@@ -1,6 +1,14 @@
 #include "shell.h"
 
-int main(__attribute__((unused)) int ac ,__attribute__((unused))char **argv)
+
+/**
+ * main - Entry Point
+ * @ac: variable not used
+ * @argv: variable not used
+ * Return: 0 on SUCCESS
+ */
+
+int main(__attribute__((unused)) int ac, __attribute__((unused)) char **argv)
 {
 	char *prompt = "$ ";
 	char *lineptr = NULL;
@@ -8,13 +16,13 @@ int main(__attribute__((unused)) int ac ,__attribute__((unused))char **argv)
 	ssize_t char_read;
 	char **save = NULL;
 
-	while(1)
+	while (1)
 	{
 		save = NULL;
 		lineptr = NULL;
 		n = 0;
 		if (isatty(0))
-			printf("%s", prompt);	
+			printf("%s", prompt);
 		char_read = getline(&lineptr, &n, stdin);
 
 		if (char_read == -1)
@@ -24,10 +32,23 @@ int main(__attribute__((unused)) int ac ,__attribute__((unused))char **argv)
 		}
 		save = parser(lineptr, " \n");
 		free(lineptr);
+
 		if (save[0])
+		{
+			if (strcmp(save[0], "env") == 0)
+			{
+				print_env();
+			}
+		else
+		{
 			exec(save);
-		else 
+		}
+
+		}
+		else
+		{
 			free(save);
+		}
 	}
 
 	free(lineptr);
