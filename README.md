@@ -170,16 +170,16 @@
 
 
 ## **📚Acknowledgements**
-We would like to thank those who have contributed to this project:
-![Lizzbeth Garleb](https://github.com/LizzGarleb)
-![Eduardo Figueroa](https://github.com/Semaed)
-![Jose ](https://github.com/J_Gohan)
+We would like to thank those who have contributed to this project:<br>
+![Lizzbeth Garleb](https://github.com/LizzGarleb)<br>
+![Eduardo Figueroa](https://github.com/Semaed)<br>
+![Jose ](https://github.com/J_Gohan)<br>
 
 [Back to Top](#project-name)
 
 ## 🤝Authors
-![Jean Micheal Barbosa](https://github.com/JeanBarbosa-hue)
-![Jonathan Perez](https://github.com/JonathanPR24)
+![Jean Micheal Barbosa](https://github.com/JeanBarbosa-hue)<br>
+![Jonathan Perez](https://github.com/JonathanPR24)<br>
 ![Xai Betancourt](https://github.com/Xespinosa)
 
 [Back to Top](#project-name)
