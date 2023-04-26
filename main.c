@@ -10,48 +10,55 @@
 
 int main(__attribute__((unused)) int ac, __attribute__((unused)) char **argv)
 {
-	char *prompt = "$ ";
-	char *lineptr = NULL;
-	size_t n = 0;
-	ssize_t char_read;
-	char **save = NULL;
+        char *prompt = "$ ";
+        char *lineptr = NULL;
+        size_t n = 0;
+        ssize_t char_read;
+        char **save = NULL;
+        int should_exit = 0;
 
-	while (1)
-	{
-		save = NULL;
-		lineptr = NULL;
-		n = 0;
-		if (isatty(0))
-			printf("%s", prompt);
-		char_read = getline(&lineptr, &n, stdin);
+        while (!should_exit)
+        {
+                save = NULL;
+                lineptr = NULL;
+                n = 0;
+                if (isatty(0))
+                        printf("%s", prompt);
+                char_read = getline(&lineptr, &n, stdin);
 
-		if (char_read == -1)
-		{
-			free(lineptr);
-			exit(EXIT_SUCCESS);
-		}
-		save = parser(lineptr, " \n");
-		free(lineptr);
+                if (char_read == -1)
+                {
+                        free(lineptr);
+                        exit(EXIT_SUCCESS);
+                }
+                save = parser(lineptr, " \n");
+                free(lineptr);
 
-		if (save[0])
-		{
-			if (strcmp(save[0], "env") == 0)
-			{
-				print_env();
-			}
-		else
-		{
-			exec(save);
-		}
+                if (save[0])
+                {
+                        if (strcmp(save[0], "exit") == 0)
+                        {
+                                exec_exit();
+                                should_exit = 1;
+                        }
 
-		}
-		else
-		{
-			free(save);
-		}
-	}
+                        if (strcmp(save[0], "env") == 0)
+                        {
+                                print_env();
+                        }
+                else
+                {
+                        exec(save);
+                }
 
-	free(lineptr);
-	free_array(save);
-	return (0);
+                }
+                else
+                {
+                        free(save);
+                }
+        }
+
+        free(lineptr);
+        free_array(save);
+        return (0);
 }
