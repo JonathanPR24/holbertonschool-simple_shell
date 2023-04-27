@@ -1,5 +1,15 @@
 #include "shell.h"
 
+/**
+ * directions - finds the full path of a command in
+ * the PATH environment variable
+ *
+ * @cmnd: the command to be searched
+ *
+ * Return: a pointer to a string containing the full path of the command, or
+ * NULL if the command is not found
+ */
+
 char *directions(char *cmnd)
 {
 	char *path, *path_copy, *path_token, *file_path;
