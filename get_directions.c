@@ -35,7 +35,7 @@ char *directions(char *cmnd)
 			}
 			if (stat(file_path, &buffer) == 0)
 			{
-				free(path_copy);
+				free(path_copy);	
 				return (file_path);
 			}
 			else
@@ -45,9 +45,11 @@ char *directions(char *cmnd)
 			}
 		}
 		free(path_copy);
-		if (stat(cmnd, &buffer) == 0)
-			return (cmnd);
-		return (NULL);
 	}
-	return (NULL);
+		if (stat(cmnd, &buffer) == 0)
+		{
+			char *cpy_cmnd = strdup(cmnd);
+			return (cmnd);
+		}
+		return (NULL);
 }

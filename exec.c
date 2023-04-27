@@ -28,5 +28,7 @@ int exec(char **save)
 	else
 		wait(&status);
 
+	free(real_cmnd);
+
 	return (1);
 }

@@ -41,8 +41,9 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **argv)
 				exec(save);
 		}
 
-		free(save);
+		free_array(save);
 	}
 
+	free(lineptr);
 	return (0);
 }
