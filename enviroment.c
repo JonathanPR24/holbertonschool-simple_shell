@@ -3,11 +3,9 @@
 /**
  * print_env - print current enviroment for simple shell
  */
-
-extern char **environ;
-
-void print_env()
+void print_env(void)
 {
+	extern char **environ;
 	char **env = environ;
 
 	while (*env)
