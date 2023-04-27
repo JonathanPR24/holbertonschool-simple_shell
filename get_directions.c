@@ -49,7 +49,7 @@ char *directions(char *cmnd)
 		if (stat(cmnd, &buffer) == 0)
 		{
 			char *cpy_cmnd = strdup(cmnd);
-			return (cmnd);
+			return (cpy_cmnd);
 		}
 		return (NULL);
 }
