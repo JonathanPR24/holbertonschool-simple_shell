@@ -4,7 +4,7 @@ void free_array(char **token)
 {
 	int i = 0;
 
-	while (token)
+	while (token[i])
 	{
 		free(token[i]);
 		i++;

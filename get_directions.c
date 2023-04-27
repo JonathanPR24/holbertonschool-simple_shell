@@ -25,7 +25,6 @@ char *directions(char *cmnd)
 			}
 			if (stat(file_path, &buffer) == 0)
 			{
-				free(path_copy);
 				return (file_path);
 			}
 			else
