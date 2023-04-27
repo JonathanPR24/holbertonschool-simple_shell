@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -15,7 +14,7 @@ char **parser(char *token, char *delim);
 int exec(char **argv);
 char *directions(char *cmnd);
 void free_array(char **token);
-void print_env();
-void exec_exit(void);
+extern void exec_exit(void);
+void print_env(void);
 
 #endif
