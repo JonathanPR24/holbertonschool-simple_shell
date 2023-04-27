@@ -53,10 +53,19 @@
 
   
 ### **🗃Description of each file**
+main.c - serves as the main entry point for the simple shell program and provides the basic functionality for reading user input, parsing it, and executing commands.
 
+shell.h - header file containing all the prototype functions and libraries needed.
 
-#### **🗂Description of helper files**
+parser.c - provides the functionality to parse input strings into separate arguments.
 
+enviroment.c - allows the program to read and modify environment variables as needed during execution.
+
+free_array - used in the main.c to free the memory allocated for the array of arguments passed to the execve. 
+
+exec.c - execute user commands in the simple shell.
+
+get_directions - get the direction of an input command in the simple shell program.
 
 ### **🌎Environment**
   - Language: C
@@ -173,7 +182,7 @@
 We would like to thank those who have contributed to this project:<br>
 ![Lizzbeth Garleb](https://github.com/LizzGarleb)<br>
 ![Eduardo Figueroa](https://github.com/Semaed)<br>
-![Jose ](https://github.com/J_Gohan)<br>
+![Jose Rivera](https://github.com/jGohan-cpu)<br>
 
 [Back to Top](#project-name)
 
