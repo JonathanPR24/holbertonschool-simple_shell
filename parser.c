@@ -17,6 +17,7 @@ char **parser(char *lineptr, char *delim)
 	char **cmnds = NULL;
 	char *cmnd = NULL;
 	int i = 0;
+	int j;
 
 	cmnds = malloc(sizeof(char *) * 10);
 	cmnd = strtok(lineptr, delim);
@@ -29,6 +30,7 @@ char **parser(char *lineptr, char *delim)
 		cmnd = strtok(NULL, delim);
 	}
 	cmnds[i] = NULL;
+
 	free(cmnd);
 	return (cmnds);
 }
