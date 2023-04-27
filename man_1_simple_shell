@@ -1,0 +1,41 @@
+.TH SIMPLE SHELL 1 "April 2023" "1.0" "Simple shell Manual Page"
+.SH NAME
+Simple shell \- a fictional shell command
+.SH SYNOPSIS
+.B simple shell
+[\fIOPTIONS\fR] [\fIARGUMENTS\fR]
+.SH DESCRIPTION
+The \fBsimple shell\fR command is a fictional shell command that provides basic shell functionality for executing commands in a Unix-like environment. It supports various options and arguments to control its behavior.
+
+.SH ARGUMENTS
+.TP
+\fIARGUMENTS\fR
+Any additional arguments passed to \fBsimpleshell\fR will be treated as commands or arguments to be passed to the executed command.
+
+.SH EXAMPLES
+.TP
+\fBsimpleshell -c "ls -l"\fR
+Execute the \fBls -l\fR command and exit.
+
+.TP
+\fBsimpleshell -p "./hsh "\fR
+Start \fBsimpleshell\fR with a custom prompt string "./hsh ".
+
+.TP
+\fBsimpleshell -o output.txt -e error.txt command arg1 arg2\fR
+Redirect the output of the executed command to "output.txt" and error messages to "error.txt", and pass "command", "arg1", and "arg2" as arguments to the executed command.
+
+.SH SEE ALSO
+.BR bash (1),
+.BR sh (1),
+.BR csh (1)
+
+.SH AUTHOR
+The \fBsimpleshell\fR command and this manual page were written by [Jonathan perez, Xai Espinosa, Jean Barbosa].
+
+.SH COPYRIGHT
+Copyright (C) [2023] [Jonathan Perez]. This is free software; see the source code for copying conditions. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+.SH BUGS
+Please report any bugs or issues to [jonathanperez604@gmail.com, jeanmaldy@gmail.com, betancourtxavier77@gmail.com].
+
