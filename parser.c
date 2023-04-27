@@ -1,12 +1,17 @@
 #include "shell.h"
 
 /**
- * parser - tokenizes string
- * @token:string thats being broken up
- * @argv:used to store an array of strings
- * Return:array of strings that are separated by delimiter in the input string
+ * parser - Tokenizes a string into an array of substrings using a delimiter
+ *
+ * @lineptr: Pointer to the input string to be tokenized
+ *
+ * @delim: Delimiter character used to split the input string
+ *
+ * Return: Pointer to an array of strings, with each element containing a
+ * substring of the input string separated by the delimiter character.
+ *
+ * The last element of the array is NULL.
  */
-
 char **parser(char *lineptr, char *delim)
 {
 	char **cmnds = NULL;

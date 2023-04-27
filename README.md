@@ -1,6 +1,6 @@
 # **Project Name**
 <p align="center">
-  <img src="Simple shell in c.gif" width="650" height="200">
+  <img src="Simple shell in c.gif" width="650" height="500">
 </p>
 
 ## **📋Table of Contents**
@@ -47,7 +47,7 @@
   - The shell should not have any memory leaks
   - No more than 5 functions per file
   - All the header files should be include guarded
-  - The se system calls should be only when needed to
+  - The system calls should be only when needed to
 
 ### **💻Functions and system calls used**
 
@@ -110,7 +110,7 @@
   - This is a simple example of what and how you can do some commands in our custom shell:
     
     ```bash
-    $ echo "This is a pretty cool!"
+    $ echo "This is pretty cool!"
     This is pretty cool!
     $ man ./man_1_simple_shell (opens our manpage for more information)
     ```
@@ -169,12 +169,17 @@
 
 
 
-## **📚Project Documentation**
+## **📚Acknowledgements**
+We would like to thank those who have contributed to this project:<br>
+![Lizzbeth Garleb](https://github.com/LizzGarleb)<br>
+![Eduardo Figueroa](https://github.com/Semaed)<br>
+![Jose ](https://github.com/J_Gohan)<br>
 
 [Back to Top](#project-name)
 
 ## 🤝Authors
-![Jose Rivera](https://github.com/jGohan-cpu)
-![Eduardo Figueroa](https://github.com/semaed)
+![Jean Micheal Barbosa](https://github.com/JeanBarbosa-hue)<br>
+![Jonathan Perez](https://github.com/JonathanPR24)<br>
+![Xai Betancourt](https://github.com/Xespinosa)
 
 [Back to Top](#project-name)
