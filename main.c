@@ -7,43 +7,47 @@
  * Return: 0 on SUCCESS
  */
 
-int main(__attribute__((unused)) int ac, __attribute__((unused)) char **argv)
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char *prompt = "$ ";
 	char *lineptr = NULL;
 	size_t n = 0;
 	ssize_t char_read;
 	char **save = NULL;
-	int should_exit = 0;
 
-	while (!should_exit)
+	while (1)
 	{
 		save = NULL;
 		n = 0;
-		if (isatty(STDIN_FILENO))
+		lineptr = NULL;
+		
+		if (isatty(0))
 			printf("%s", prompt);
 
-		char_read = getline(&lineptr, &n, stdin);
-
-		if (char_read == -1)
-			exit(EXIT_SUCCESS);
-
-		save = parser(lineptr, " \n");
-		free(lineptr);
-
-		if (save[0])
+		if (getline(&lineptr, &n, stdin) == EOF)
 		{
-			if (strcmp(save[0], "exit") == 0)
-				exec_exit();
-			else if (strcmp(save[0], "env") == 0)
-				print_env();
-			else
-				exec(save);
+			free(lineptr);
+			exit(EXIT_SUCCESS);
 		}
 
-		free_array(save);
+		if (strcmp(lineptr, "exit") == 1)
+		{
+			free(lineptr);
+			exit(0);
+			
+		}
+		else if (strcmpt(linepre, "env") == 1)
+		{
+			print_env();
+			free(lineptr);
+		}
+		else
+		{
+			save = parser(lineptr, " \n");
+			excution(save);
+			free(lineptr);
+		}
+		
 	}
-
-	free(lineptr);
 	return (0);
 }
