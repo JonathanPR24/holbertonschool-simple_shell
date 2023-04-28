@@ -14,7 +14,8 @@ char **parser(char *token, char *delim);
 int exec(char **argv);
 char *directions(char *cmnd);
 void free_array(char **token);
-extern void exec_exit(void);
-void print_env(void);
+void print_env(char **environ);
+int goodbye(char **save);
+int check_input(char **save, char **env);
 
 #endif

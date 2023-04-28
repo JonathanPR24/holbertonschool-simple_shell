@@ -1,53 +1,89 @@
 #include "shell.h"
-
 /**
  * main - Entry Point
  * @ac: variable not used
  * @argv: variable not used
  * Return: 0 on SUCCESS
+ * @env: env variable
  */
 
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
+int main(int ac, char **argv __attribute__((unused)), char **env)
 {
-	char *prompt = "$ ";
-	char *lineptr = NULL;
-	size_t n = 0;
+	char *prompt = "$ ", *lineptr = NULL, **save = NULL;
 	ssize_t char_read;
-	char **save = NULL;
+	size_t n = 0;
+	int i;
+	(void) ac;
 
 	while (1)
 	{
 		save = NULL;
 		n = 0;
-		lineptr = NULL;
-		
+
 		if (isatty(0))
 			printf("%s", prompt);
-
-		if (getline(&lineptr, &n, stdin) == EOF)
+		char_read = getline(&lineptr, &n, stdin);
+		if (char_read == -1)
 		{
 			free(lineptr);
 			exit(EXIT_SUCCESS);
 		}
 
-		if (strcmp(lineptr, "exit") == 1)
+		if (char_read == -1)
+			exit(EXIT_SUCCESS);
+
+		save = parser(lineptr, " \n");
+		free(lineptr);
+
+		if (save[0])
 		{
-			free(lineptr);
-			exit(0);
-			
-		}
-		else if (strcmpt(linepre, "env") == 1)
-		{
-			print_env();
-			free(lineptr);
+			if (check_input(save, env) == 0)
+				continue;
 		}
 		else
-		{
-			save = parser(lineptr, " \n");
-			excution(save);
-			free(lineptr);
-		}
-		
+			free(save);
 	}
+	free(lineptr);
+	free_array(save);
 	return (0);
+}
+
+/**
+ * check_input - validate the user input
+ * @save: user input
+ * @env: env variable
+ * Return: 0 for env input or 1 on execution
+ */
+
+int check_input(char **save, char **env)
+{
+	if (strcmp(save[0], "exit") == 0)
+	{
+		goodbye(save);
+		exec(save);
+	}
+	else if (strcmp(save[0], "env") == 0)
+	{
+		free_array(save);
+		print_env(env);
+		return (0);
+	}
+	else
+		exec(save);
+	return (1);
+}
+
+/**
+ * goodbye - free everything once done
+ * @save: user input
+ * Return: 1 on success
+ */
+int goodbye(char **save)
+{
+	if (strcmp(save[0], "exit") == 0)
+	{
+		free_array(save);
+		exit(0);
+	}
+	return (1);
 }

@@ -1,15 +1,9 @@
 #include "shell.h"
-
 /**
- * directions - finds the full path of a command in
- * the PATH environment variable
- *
- * @cmnd: the command to be searched
- *
- * Return: a pointer to a string containing the full path of the command, or
- * NULL if the command is not found
- */
-
+ * directions - function to get path
+ * @cmnd: user input
+ * Return: full path to execute
+**/
 char *directions(char *cmnd)
 {
 	char *path, *path_copy, *path_token, *file_path;
@@ -25,6 +19,7 @@ char *directions(char *cmnd)
 		while (path_token != NULL)
 		{
 			dir_len = strlen(path_token);
+
 			file_path = malloc(cmnd_len + dir_len + 2);
 			if (file_path != NULL)
 			{
@@ -35,7 +30,7 @@ char *directions(char *cmnd)
 			}
 			if (stat(file_path, &buffer) == 0)
 			{
-				free(path_copy);	
+				free(path_copy);
 				return (file_path);
 			}
 			else
@@ -45,11 +40,9 @@ char *directions(char *cmnd)
 			}
 		}
 		free(path_copy);
-	}
 		if (stat(cmnd, &buffer) == 0)
-		{
-			char *cpy_cmnd = strdup(cmnd);
-			return (cpy_cmnd);
-		}
+			return (cmnd);
 		return (NULL);
+	}
+	return (NULL);
 }
