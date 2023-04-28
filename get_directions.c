@@ -11,6 +11,7 @@ char *directions(char *cmnd)
 	struct stat buffer;
 
 	path = getenv("PATH");
+
 	if (path)
 	{
 		path_copy = strdup(path);

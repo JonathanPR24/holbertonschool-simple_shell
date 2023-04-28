@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * main - Entry Point
  * @ac: variable not used
@@ -28,9 +29,6 @@ int main(int ac, char **argv __attribute__((unused)), char **env)
 			exit(EXIT_SUCCESS);
 		}
 
-		if (char_read == -1)
-			exit(EXIT_SUCCESS);
-
 		save = parser(lineptr, " \n");
 		free(lineptr);
 
@@ -56,6 +54,8 @@ int main(int ac, char **argv __attribute__((unused)), char **env)
 
 int check_input(char **save, char **env)
 {
+	int i = 0;
+
 	if (strcmp(save[0], "exit") == 0)
 	{
 		goodbye(save);
@@ -68,7 +68,9 @@ int check_input(char **save, char **env)
 		return (0);
 	}
 	else
+	{
 		exec(save);
+	}
 	return (1);
 }
 

@@ -10,13 +10,11 @@
  */
 int exec(char **save)
 {
-	char *cmnd = NULL;
 	char *real_cmnd = NULL;
 	pid_t child_pid;
 	int status;
 
-	cmnd = save[0];
-	real_cmnd = directions(cmnd);
+	real_cmnd = directions(save[0]);
 	child_pid = fork();
 	if (child_pid == -1)
 		perror("Error:");
@@ -28,7 +26,11 @@ int exec(char **save)
 	else
 		wait(&status);
 
-	free(real_cmnd);
+	if (strncmp(save[0], "/bin", 4))
+		free_array(save);
+	else
+		free(save);
 
+	free(real_cmnd);
 	return (1);
 }
