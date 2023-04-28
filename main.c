@@ -54,8 +54,6 @@ int main(int ac, char **argv __attribute__((unused)), char **env)
 
 int check_input(char **save, char **env)
 {
-	int i = 0;
-
 	if (strcmp(save[0], "exit") == 0)
 	{
 		goodbye(save);
