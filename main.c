@@ -12,7 +12,6 @@ int main(int ac, char **argv __attribute__((unused)), char **env)
 	char *prompt = "$ ", *lineptr = NULL, **save = NULL;
 	ssize_t char_read;
 	size_t n = 0;
-	int i;
 	(void) ac;
 
 	while (1)
