@@ -1,5 +1,9 @@
 #include "shell.h"
-
+/**
+ * directions - function to get path
+ * @cmnd: user input
+ * Return: full path to execute
+**/
 char *directions(char *cmnd)
 {
 	char *path, *path_copy, *path_token, *file_path;
@@ -15,6 +19,7 @@ char *directions(char *cmnd)
 		while (path_token != NULL)
 		{
 			dir_len = strlen(path_token);
+
 			file_path = malloc(cmnd_len + dir_len + 2);
 			if (file_path != NULL)
 			{
@@ -25,6 +30,7 @@ char *directions(char *cmnd)
 			}
 			if (stat(file_path, &buffer) == 0)
 			{
+				free(path_copy);
 				return (file_path);
 			}
 			else
