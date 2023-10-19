@@ -1,19 +1,18 @@
 #include "shell.h"
 
 /**
- * main - Entry Point
- * @ac: variable not used
- * @argv: variable not used
- * Return: 0 on SUCCESS
- * @env: env variable
+ * main - Entry Point for the custom shell
+ * @ac: The argument count (not used)
+ * @argv: The array of arguments (not used)
+ * @env: The environment variables
+ * Return: Always returns 0
  */
-
 int main(int ac, char **argv __attribute__((unused)), char **env)
 {
 	char *prompt = "$ ", *lineptr = NULL, **save = NULL;
 	ssize_t char_read;
 	size_t n = 0;
-	(void) ac;
+	(void) ac; // The argument count is not used
 
 	while (1)
 	{
@@ -22,6 +21,7 @@ int main(int ac, char **argv __attribute__((unused)), char **env)
 
 		if (isatty(0))
 			printf("%s", prompt);
+
 		char_read = getline(&lineptr, &n, stdin);
 		if (char_read == -1)
 		{
@@ -46,12 +46,11 @@ int main(int ac, char **argv __attribute__((unused)), char **env)
 }
 
 /**
- * check_input - validate the user input
- * @save: user input
- * @env: env variable
- * Return: 0 for env input or 1 on execution
+ * check_input - Validates and processes user input
+ * @save: The user input parsed into an array
+ * @env: The environment variables
+ * Return: 0 if the input is for "env," 1 for execution
  */
-
 int check_input(char **save, char **env)
 {
 	if (strcmp(save[0], "exit") == 0)
@@ -73,8 +72,8 @@ int check_input(char **save, char **env)
 }
 
 /**
- * goodbye - free everything once done
- * @save: user input
+ * goodbye - Frees allocated memory when "exit" command is called
+ * @save: The user input parsed into an array
  * Return: 1 on success
  */
 int goodbye(char **save)
@@ -86,3 +85,4 @@ int goodbye(char **save)
 	}
 	return (1);
 }
+
