@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "shell.h"  // Include the "shell.h" header file for function prototypes and declarations.
 
 /**
  * main - Entry Point for the custom shell
@@ -20,29 +20,31 @@ int main(int ac, char **argv __attribute__((unused)), char **env)
 		n = 0;
 
 		if (isatty(0))
-			printf("%s", prompt);
+			printf("%s", prompt);  // Print the shell prompt if the program is run in an interactive mode.
 
-		char_read = getline(&lineptr, &n, stdin);
+		char_read = getline(&lineptr, &n, stdin);  // Read the user's input from the command line.
+
 		if (char_read == -1)
 		{
 			free(lineptr);
-			exit(EXIT_SUCCESS);
+			exit(EXIT_SUCCESS);  // Exit the program if there is an error or end of input.
 		}
 
-		save = parser(lineptr, " \n");
-		free(lineptr);
+		save = parser(lineptr, " \n");  // Parse the user input into an array of strings.
+		free(lineptr);  // Free the allocated memory for 'lineptr'.
 
 		if (save[0])
 		{
 			if (check_input(save, env) == 0)
-				continue;
+				continue;  // Continue the loop if the input was for the "env" command.
 		}
 		else
-			free(save);
+			free(save);  // Free the memory allocated for 'save' if no command was entered.
 	}
-	free(lineptr);
-	free_array(save);
-	return (0);
+	free(lineptr);  // Free the allocated memory for 'lineptr'.
+	free_array(save);  // Free the memory allocated for 'save' array.
+
+	return (0);  // Return 0 to indicate successful execution of the program.
 }
 
 /**
@@ -55,20 +57,20 @@ int check_input(char **save, char **env)
 {
 	if (strcmp(save[0], "exit") == 0)
 	{
-		goodbye(save);
-		exec(save);
+		goodbye(save);  // Handle "exit" command by freeing memory and exiting.
+		exec(save);  // Execute the given command.
 	}
 	else if (strcmp(save[0], "env") == 0)
 	{
-		free_array(save);
-		print_env(env);
-		return (0);
+		free_array(save);  // Free memory used by 'save' array.
+		print_env(env);  // Print environment variables.
+		return (0);  // Return 0 to indicate that the input was for the "env" command.
 	}
 	else
 	{
-		exec(save);
+		exec(save);  // Execute the given command.
 	}
-	return (1);
+	return (1);  // Return 1 to indicate that the input was for command execution.
 }
 
 /**
@@ -80,9 +82,8 @@ int goodbye(char **save)
 {
 	if (strcmp(save[0], "exit") == 0)
 	{
-		free_array(save);
-		exit(0);
+		free_array(save);  // Free memory used by 'save' array.
+		exit(0);  // Exit the program gracefully.
 	}
-	return (1);
+	return (1);  // Return 1 to indicate success.
 }
-
